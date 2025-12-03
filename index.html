@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grizon Russell</title>
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">  
+
+    <style>
+        :root {
+            --bg-dark: #0A0A0A; 
+            --text-light: #F9F9F9;
+            --border-gray: #333333;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Coolvetica', sans-serif;
+            scroll-behavior: smooth;
+            letter-spacing: 2px;
+        }
+
+        @font-face {
+            font-family: 'Coolvetica';
+            src: url('fonts/Coolvetica Rg.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'Infinium Guardian';
+            src: url('fonts/Infinium Guardian.ttf') format('truetype');
+        }
+
+        /* NAVIGATION LINK STYLES */
+        .nav-link-style {
+            position: relative;
+            padding-bottom: 6px;
+            transition: color .3s ease;
+            display: inline-flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .nav-link-style::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background-color: currentColor;
+            width: 0;
+            transition: width 0.5s cubic-bezier(0.30, 0.1, 0.15, 1);
+        }
+
+        .nav-link-style.active::after {
+            width: 20px;
+        }
+
+        .nav-link-style:hover::after {
+            width: 100%;
+        }
+
+        /* SKILL BAR ANIMATION */
+        .skill-bar-fill {
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            width: 0;
+        }
+
+        /* MOBILE LOGO SIZE + ALIGNMENT (same across all pages) */
+        @media (max-width: 768px) {
+            .mobile-logo {
+                height: 30px !important; /* adjustable logo size */
+                margin-top: 0 !important;
+            }
+            .mobile-nav-align {
+                align-items: center !important;
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+        }
+
+        /* PAGE FADE-IN ANIMATION */
+        #page-wrapper {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        #page-wrapper.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        /* --- MOBILE NAVBAR FIX (MATCHES OTHER PAGES) ----------------------- */
+@media (max-width: 768px) {
+
+    /* Align logo + burger button perfectly */
+    .mobile-nav-align {
+        align-items: center !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    /* Adjustable mobile logo size */
+    .mobile-logo {
+        height: 42px !important; /* ← change this if you want */
+        margin-top: 0 !important;
+    }
+
+    /* Adjust burger button size + alignment */
+    #mobile-menu-btn {
+        font-size: 32px !important;
+        margin-top: 0 !important;
+        padding-top: 4px;
+    }
+
+    /* Make the navbar cleaner on mobile */
+    nav {
+        padding-top: 1.25rem !important;
+        padding-bottom: 1.25rem !important;
+    }
+
+    /* Mobile menu full width fix */
+    #mobile-menu {
+        width: 100% !important;
+        top: 100%;
+        left: 0;
+    }
+}
+
+
+/* --- HERO SECTION RESPONSIVE FIX ---------------------------------- */
+@media (max-width: 768px) {
+    /* Reduce hero heading size */
+    #home h1 {
+        font-size: 2.6rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Align social links vertically */
+    #home .text-2xl {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    #home .text-right {
+        text-align: left !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #home h1 {
+        font-size: 2.2rem !important;
+    }
+}
+
+
+/* --- ABOUT SECTION FIX -------------------------------------------- */
+@media (max-width: 768px) {
+    #about img {
+        width: 85% !important;
+    }
+
+    #about h2 {
+        font-size: 2.6rem !important;
+    }
+
+    #about p {
+        font-size: 1.3rem !important;
+    }
+}
+
+
+/* --- SKILLS SECTION FIX ------------------------------------------- */
+@media (max-width: 768px) {
+    #skills h2 {
+        font-size: 2.6rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .skill-box {
+        padding: 2rem !important;
+    }
+}
+
+
+/* --- PROJECTS SECTION FIX ------------------------------------------ */
+@media (max-width: 768px) {
+    #projects h2 {
+        font-size: 2.8rem !important;
+        line-height: 1.2 !important;
+    }
+
+    #projects h3 {
+        font-size: 2rem !important;
+    }
+}
+
+
+/* --- CONTACT SECTION FIX ------------------------------------------- */
+@media (max-width: 768px) {
+    #contact a.text-5xl,
+    #contact a.text-8xl {
+        font-size: 2.8rem !important;
+    }
+
+    #contact .mt-16 {
+        margin-top: 3rem !important;
+    }
+}
+
+    </style>
+
+</head>
+
+<body class="antialiased">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 bg-dark-bg/50 backdrop-blur-lg transition-all duration-300">
+    <nav class="max-w-[1650px] mx-auto px-6 py-8 flex justify-between items-start mobile-nav-align text-lg">
+
+        <!-- Logo -->
+        <a href="#home" class="mt-5 inline-block">
+            <img src="images/logo.png" alt="Genzo Logo" class="mobile-logo h-10 sm:h-12 md:h-5 object-contain">
+        </a>
+
+        <!-- Desktop Nav -->
+        <div id="desktop-nav" class="hidden md:flex space-x-8 mt-3 absolute left-1/2 transform -translate-x-1/2">
+            <a href="#home" class="text-2xl nav-link-style">Home</a>
+            <a href="#about" class="text-2xl nav-link-style">About</a>
+            <a href="#projects" class="text-2xl nav-link-style">Projects</a>
+            <a href="#contact" class="text-2xl nav-link-style">Contact</a>
+        </div>
+
+        <!-- Lets Talk -->
+        <a href="Contact.html" class="hidden md:flex mt-3 flex-col items-end hover:text-gray-300 transition-colors group nav-link-style">
+            <span class="text-2xl flex items-center gap-2">
+                Lets Talk
+                <span class="ri-arrow-right-up-line text-3xl font-bold transition-transform group-hover:translate-x-1"></span>
+            </span>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-3xl mt-3 focus:outline-none">
+            &#9776;
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+         class="hidden md:hidden flex flex-col items-center pb-6 text-lg font-bold bg-dark-bg border-t border-accent-gray w-full left-0 z-50 text-center">
+        <a href="#home" class="nav-link-style py-4 w-full border-accent-gray border-b">Home</a>
+        <a href="#about" class="nav-link-style py-4 w-full border-accent-gray border-b">About</a>
+        <a href="#projects" class="nav-link-style py-4 w-full border-accent-gray border-b">Projects</a>
+        <a href="#contact" class="nav-link-style py-4 w-full border-accent-gray border-b">Contact</a>
+    </div>
+</header>
+
+
+<!-- PAGE ANIMATION WRAPPER -->
+<div id="page-wrapper">
+   <main class="max-w-[1650px] mx-auto px-6">
+        <div id="page-content" class="opacity-0 translate-y-10 transition-all duration-1000"></div>
+        <!-- Home/Hero Section -->
+        <section id="home" class="scroll-mt-[120px] pt-20 pb-40 min-h-[85vh] flex flex-col justify-center">
+            <!-- Hero Heading -->
+            <h1 class="text-6xl sm:text-8xl md:text-10xl lg:text-[7rem] mb-24 hero-heading tracking-normal text-white max-w-10xl">
+                I'm a UI/UX designer passionate<br>
+                about crafting visually engaging<br>
+                and user-friendly experiences.
+            </h1>
+            
+            <!-- Bottom Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                
+                <!-- Left Side: Line + Socials -->
+            <div class="flex flex-col">
+                <div class="w-full max-w-md h-1 bg-white mb-10 mx-left"></div>
+                
+                <div class="text-2xl tracking-wide text-white flex space-x-8">
+                        <!-- Social links retain the dash/full-underline on hover -->
+                    <div class="inline-block group cursor-pointer">
+                        <a href="https://www.facebook.com/grizonrussel.sacay/" target="_blank" rel="noopener noreferrer"
+                        class="text-2xl sm:text-3xl flex items-center hover:text-gray-300 transition duration-300">
+                            Facebook
+                            <i class="ri-arrow-right-up-line ml-2 text-5xl transform transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                        <!-- Adjusted underline: thinner and proportional -->
+                        <div class="w-10 h-1 bg-white mt-2 group-hover:w-full transition-all duration-300"></div>
+                    </div>
+                    <div class="inline-block group cursor-pointer">
+                        <a href="https://www.instagram.com/grznrssll/" target="_blank" rel="noopener noreferrer"
+                        class="text-2xl sm:text-3xl flex items-center hover:text-gray-300 transition duration-300">
+                            Instagram
+                            <i class="ri-arrow-right-up-line ml-2 text-5xl transform transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                        <!-- Adjusted underline: thinner and proportional -->
+                        <div class="w-10 h-1 bg-white mt-2 group-hover:w-full transition-all duration-300"></div>
+                    </div>
+                    <div class="inline-block group cursor-pointer">
+                        <a href="https://www.linkedin.com/in/grizon-russell-sacay-a61746257/" target="_blank" rel="noopener noreferrer"
+                        class="text-2xl sm:text-3xl flex items-center hover:text-gray-300 transition duration-300">
+                            LinkedIn
+                            <i class="ri-arrow-right-up-line ml-2 text-5xl transform transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                        <!-- Adjusted underline: thinner and proportional -->
+                        <div class="w-10 h-1 bg-white mt-2 group-hover:w-full transition-all duration-300"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Intro Text -->
+                <div class="flex justify-end">
+                    <p class="text-xl md:text-3xl lg:text-3xl text-gray-200 max-w-5xl leading-snug font-medium text-right tracking-normal -mt-10">
+                        I'm <span class="text-white tracking-tight">Grizon Russell</span>, a visual designer turning ideas into easy and engaging experiences in the Philippines.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="scroll-mt-[65px] py-32 px-4 lg:px-20">
+            <div class="flex flex-col lg:flex-row lg:space-x-20 items-center max-w-8xl mx-auto">
+                <!-- Profile Image -->
+                <div class="mb-12 lg:mb-0 w-full lg:w-[550px] flex-shrink-0 flex justify-center lg:justify-start">
+                    <img src="images/grizon 1.png" 
+                        alt="Designer Profile Photo" 
+                        class="rounded-lg shadow-2xl object-cover grayscale hover:grayscale-0 transition duration-500" 
+                    >
+                </div>
+                
+                <!-- Text Content -->
+                <div class="w-full text-center lg:text-left">
+                    <h2 class="text-4xl sm:text-4xl md:text-8xl mb-12 leading-none tracking-tight">
+                        Design that engages<br>and inspires
+                    </h2>
+                    <p class="text-gray-400 mb-10 text-3xl max-w-2xl tracking-normal mx-auto lg:mx-0">
+                        Concentrate on your vision while I craft a digital presence that highlights your uniqueness.
+                    </p>
+                    
+                    <div class="inline-block group cursor-pointer">
+                        <a href="About.html" 
+                        class="text-3xl text-white group-hover:text-gray-300 transition duration-300 flex items-center tracking-normal justify-center lg:justify-start"
+                        onclick="navigateWithAnimation(event)">
+                            About me
+                            <i class="ri-arrow-right-up-line text-4xl transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                        <div class="w-12 h-0.5 bg-white mt-2 group-hover:w-full transition-all duration-300 mx-auto lg:mx-0"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-32">
+        <h2 class="md:text-7xl mb-24 leading-[1.1] max-w-6xl text-white" style="font-family: 'Coolvetica', sans-serif;">
+            My Experience and Mastery of the Design Tools I’ve Used Throughout My Career
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Skill 1 -->
+            <div class="skill-box p-8 border border-black/10 rounded-2xl hover:border-white/30 transition duration-500 bg-white/5 backdrop-blur-sm">
+                <h3 class="text-4xl mb-2 tracking-wide text-white" style="font-family: 'Coolvetica', sans-serif;">Website Design</h3>
+                <p class="text-2md text-gray-500 mb-8 tracking-widest" style="font-family: 'Coolvetica', sans-serif;">Scalable UI Components</p>
+                
+                <div class="text-7xl mb-6 text-white" style="font-family: 'Infinium Guardian', sans-serif;">90%</div>
+                
+                <div class="h-16 w-full bg-gray-800/50 rounded-lg overflow-hidden relative">
+                    <div class="skill-bar-fill h-full bg-white absolute top-0 left-0" data-percentage="90"></div>
+                </div>
+            </div>
+
+            <!-- Skill 2 -->
+            <div class="skill-box p-8 border border-black/10 rounded-2xl hover:border-white/30 transition duration-500 bg-white/5 backdrop-blur-sm">
+                <h3 class="text-4xl mb-2 tracking-wide text-white" style="font-family: 'Coolvetica', sans-serif;">Mobile App UI</h3>
+                <p class="text-2md text-gray-500 mb-8 tracking-widest" style="font-family: 'Coolvetica', sans-serif;">Device Friendly Layouts</p>
+                
+                <div class="text-7xl mb-6 text-white" style="font-family: 'Infinium Guardian', sans-serif;">85%</div>
+                
+                <div class="h-16 w-full bg-gray-800/50 rounded-lg overflow-hidden relative">
+                    <div class="skill-bar-fill h-full bg-white absolute top-0 left-0" data-percentage="85"></div>
+                </div>
+            </div>
+
+            <!-- Skill 3 -->
+            <div class="skill-box p-8 border border-black/10 rounded-2xl hover:border-white/30 transition duration-500 bg-white/5 backdrop-blur-sm">
+                <h3 class="text-4xl mb-2 tracking-wide text-white" style="font-family: 'Coolvetica', sans-serif;">Prototyping</h3>
+                <p class="text-2md text-gray-500 mb-8 tracking-widest" style="font-family: 'Coolvetica', sans-serif;">Motion and Transitions</p>
+                
+                <div class="text-7xl mb-6 text-white" style="font-family: 'Infinium Guardian', sans-serif;">90%</div>
+                
+                <div class="h-16 w-full bg-gray-800/50 rounded-lg overflow-hidden relative">
+                    <div class="skill-bar-fill h-full bg-white absolute top-0 left-0" data-percentage="90"></div>
+                </div>
+            </div>
+
+            <!-- Skill 4 -->
+            <div class="skill-box p-8 border border-black/10 rounded-2xl hover:border-white/30 transition duration-500 bg-white/5 backdrop-blur-sm">
+                <h3 class="text-4xl mb-2 tracking-wide text-white" style="font-family: 'Coolvetica', sans-serif;">Figma Design</h3>
+                <p class="text-2md text-gray-500 mb-8 tracking-widest" style="font-family: 'Coolvetica', sans-serif;">Designing Tool</p>
+                
+                <div class="text-7xl mb-6 text-white" style="font-family: 'Infinium Guardian', sans-serif;">90%</div>
+                
+                <div class="h-16 w-full bg-gray-800/50 rounded-lg overflow-hidden relative">
+                    <div class="skill-bar-fill h-full bg-white absolute top-0 left-0" data-percentage="90"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-32">
+        <h2 class="text-4xl sm:text-8xl mb-20 leading-none tracking-normal">
+            Discover my recent<br>projects
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
+            
+            <!-- Project 1 -->
+            <a href="#~" class="group block overflow-hidden rounded-2xl  border-white/10">
+                <!-- Project image -->
+                <div class="group block overflow-hidden rounded-2xl  border-white/10">
+                    <img src="images/Projects/Landingpage.png"
+                        alt="Landingpage Design"
+                        class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700 ease-out"
+                    >
+                </div>
+
+                <!-- Project info -->
+                <div class="p-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-4xl md:text-5xl tracking-normal text-white">Landingpage Design</h3>
+                        <i class="ri-arrow-right-up-line text-5xl sm:text-6xl text-white transition-transform group-hover:translate-x-2"></i>
+                    </div>
+                    <p class="text-2xl mt-4 text-gray-500 mt-1 tracking-wide">ui/ux</p>
+                    <div class="w-12 h-1 bg-white mt-4 group-hover:w-full transition-all duration-300"></div>
+                </div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="#" class="group block overflow-hidden rounded-2xl  border-white/10">
+                <!-- Project image -->
+                <div class="group block overflow-hidden rounded-2xl  border-white/10">
+                    <img src="images/Projects/Mobile.png"
+                        alt="Landingpage Design"
+                        class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700 ease-out"
+                    >
+                </div>
+
+                <!-- Project info -->
+                <div class="p-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-4xl md:text-5xl tracking-normal text-white">Mobile Application</h3>
+                        <i class="ri-arrow-right-up-line text-5xl sm:text-6xl text-white transition-transform group-hover:translate-x-2"></i>
+                    </div>
+                    <p class="text-2xl mt-4 text-gray-500 mt-1 tracking-wide">ui/ux</p>
+                    <div class="w-12 h-1 bg-white mt-4 group-hover:w-full transition-all duration-300"></div>
+                </div>
+            </a>
+
+            <!-- Project 3 (Wide) -->
+            <a href="#" class="group block md:col-span-2 overflow-hidden rounded-2xl border-white/10">
+                <!-- Project image -->
+                <div class="group block overflow-hidden rounded-2xl  border-white/10">
+                    <img src="images/Projects/System.png"
+                        alt="System Web Design"
+                        class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700 ease-out"
+                    >
+                </div>
+
+                <!-- Project info -->
+                <div class="p-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-4xl md:text-5xl mb-2 tracking-normal text-white">System Web Design</h3>
+                        <i class="ri-arrow-right-up-line text-3xl md:text-5xl text-gray-400 group-hover:text-white transition-transform group-hover:translate-x-1 md:group-hover:translate-x-2"></i>
+                    </div>
+                    <p class="text-2xl mt-4 text-gray-500 mt-1 tracking-wide">ui/ux</p>
+                    <!-- underline effect only on wide screens -->
+                    <div class="hidden md:block w-12 h-1 bg-white mt-4 group-hover:w-full transition-all duration-300"></div>
+                </div>
+            </a>
+
+            <!-- Project 4 -->
+            <a href="#" class="group block overflow-hidden rounded-2xl  border-white/10">
+                <!-- Project image -->
+                <div class="group block overflow-hidden rounded-2xl  border-white/10">
+                    <img src="images/Projects/E Commerce.png"
+                        alt="Landingpage Design"
+                        class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700 ease-out"
+                    >
+                </div>
+
+                <!-- Project info -->
+                <div class="p-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-2xl sm:text-5xl tracking-normal text-white">E Commerce Design</h3>
+                        <i class="ri-arrow-right-up-line text-5xl sm:text-6xl text-white transition-transform group-hover:translate-x-2"></i>
+                    </div>
+                    <p class="text-2xl mt-4 text-gray-500 mt-1 tracking-wide">ui/ux</p>
+                    <div class="w-12 h-1 bg-white mt-4 group-hover:w-full transition-all duration-300"></div>
+                </div>
+            </a>
+
+            <!-- Project 5 -->
+            <a href="#" class="group block overflow-hidden rounded-2xl  border-white/10">
+                <!-- Project image -->
+                <div class="group block overflow-hidden rounded-2xl  border-white/10">
+                    <img src="images/Projects/Business.png"
+                        alt="Landingpage Design"
+                        class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700 ease-out"
+                    >
+                </div>
+
+                <!-- Project info -->
+                <div class="p-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-2xl sm:text-5xl tracking-normal text-white">Business Design</h3>
+                        <i class="ri-arrow-right-up-line text-5xl sm:text-6xl text-white transition-transform group-hover:translate-x-2"></i>
+                    </div>
+                    <p class="text-2xl mt-4 text-gray-500 mt-1 tracking-wide">ui/ux</p>
+                    <div class="w-12 h-1 bg-white mt-4 group-hover:w-full transition-all duration-300"></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 border-t border-gray-800">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-start">
+                
+                <!-- Left side -->
+                <div>
+                    <p class="text-3xl text-white mb-6 tracking-normal">
+                        Looking for a ui/ux designer?
+                    </p>
+
+                    <div class="inline-block group cursor-pointer">
+                        <a href="Contact.html" class="text-5xl sm:text-8xl flex items-center hover:text-gray-300 transition duration-350 letter-spacing: 5px;">
+                            Let's talk here 
+                            <i class="ri-arrow-right-up-line ml-4 text-8xl transform transition-transform group-hover:translate-x-2"></i>
+                        </a>
+                        <div class="w-32 h-1.5 bg-white mt-6 group-hover:w-full transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Right side -->
+                <div class="mt-16 lg:mt-0 ml-10">
+                    <p class="text-3xl mr-20 text-white tracking-normal mb-6">
+                        Visit my socials here
+                    </p>
+                    <div class="flex space-x-8 text-3xl mb-10 text-gray-400">
+                        <a href="https://www.facebook.com/grizonrussel.sacay/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition duration-300">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/grznrssll" target="_blank" rel="noopener noreferrer" class="hover:text-white transition duration-300">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/grizon-russell-sacay-a61746257/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition duration-300">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@gnzdly" target="_blank" rel="noopener noreferrer" class="hover:text-white transition duration-300">
+                            <i class="ri-tiktok-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg mt-12 border-t border-gray-900">
+        <div class="max-w-[1650px] mx-auto px-6 py-10 text-[20px] text-gray-500 flex flex-col sm:flex-row justify-between items-center  tracking-normal">
+            <p>&copy; 2025. All Rights Reserved.</p>
+            <div class="flex space-x-6 mt-4 sm:mt-0">
+                <a href="#home" class="hover:text-white transition duration-300">Home</a>
+                <a href="#about" class="hover:text-white transition duration-300">About</a>
+                <a href="#projects" class="hover:text-white transition duration-300">Projects</a>
+                <a href="#contact" class="hover:text-white transition duration-300">Contact</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script>
+    // Fade in entire page
+    window.addEventListener("load", () => {
+        document.getElementById("page-wrapper").classList.add("fade-in");
+    });
+
+    // Mobile menu toggle
+    function toggleMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
+    }
+    document.getElementById("mobile-menu-btn").addEventListener("click", toggleMenu);
+
+    // Skill bar animation
+    document.addEventListener("DOMContentLoaded", () => {
+        const skillSection = document.getElementById("skills");
+        const skillBars = document.querySelectorAll(".skill-bar-fill");
+        let fired = false;
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !fired) {
+                    fired = true;
+                    skillBars.forEach(bar => {
+                        bar.style.width = bar.dataset.percentage + "%";
+                    });
+                }
+            });
+        }, { threshold: 0.15 });
+
+        if (skillSection) observer.observe(skillSection);
+    });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link-style");
+
+    function activateNavLink() {
+        let scrollPosition = window.scrollY + window.innerHeight / 2;
+
+        sections.forEach(section => {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            const id = section.getAttribute("id");
+
+            if (scrollPosition >= top && scrollPosition < top + height) {
+                navLinks.forEach(link => link.classList.remove("active"));
+
+                const activeLink = document.querySelector(`.nav-link-style[href="#${id}"]`);
+                if (activeLink) activeLink.classList.add("active");
+            }
+        });
+    }
+
+    // Update active nav on scroll
+    window.addEventListener("scroll", activateNavLink);
+
+    // Update immediately after clicking
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+        });
+    });
+
+    // Trigger once on page load
+    activateNavLink();
+});
+</script>
+
+</body>
+</html>

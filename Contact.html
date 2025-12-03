@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grizon Russell</title>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+    #page-content {
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+</style>
+    <style>
+        @font-face {
+            font-family: 'Coolvetica';
+            src: url('fonts/Coolvetica Rg.otf') format('opentype');
+        }
+
+        body {
+            background: #0A0A0A;
+            color: #fff;
+            font-family: 'Coolvetica', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* underline nav */
+        .nav-link { position: relative; padding-bottom: 6px; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            height: 2px; width: 0;
+            background: currentColor;
+            transition: .4s;
+        }
+        .nav-link.active::after { width: 22px; }
+        .nav-link:hover::after { width: 100%; }
+        /* MOBILE LOGO SIZE + ALIGNMENT (same as About.html) */
+        @media (max-width: 768px) {
+            .mobile-logo {
+                height: 30px !important; /* match About.html */
+                margin-top: 0 !important;
+            }
+            .mobile-nav-align {
+                align-items: center !important; 
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 bg-dark-bg/50 backdrop-blur-lg transition-all duration-300">
+    <nav class="max-w-[1650px] mx-auto px-6 py-8 flex justify-between items-start mobile-nav-align text-lg">
+
+        <!-- Logo -->
+        <a href="javascript:location.reload();" class="mt-5 inline-block">
+            <img src="images/logo.png" alt="Genzo Logo" class="mobile-logo h-10 sm:h-12 md:h-5 object-contain">
+        </a>
+
+        <!-- Desktop Nav -->
+        <div id="desktop-nav" class="hidden md:flex space-x-8 mt-3 absolute left-1/2 transform -translate-x-1/2">
+            <a href="index.html" class="text-2xl nav-link">Home</a>
+            <a href="About.html" class="text-2xl nav-link">About</a>
+            <a href="index.html#projects" class="text-2xl nav-link">Projects</a>
+            <a href="contact.html" class="text-2xl nav-link active">Contact</a>
+        </div>
+
+        <!-- Lets Talk Button -->
+        <a href="contact.html" class="hidden md:flex mt-3 flex-col items-end hover:text-gray-300 transition-colors group nav-link active">
+            <span class="text-2xl flex items-center gap-2">
+                Lets Talk
+                <span class="ri-arrow-right-up-line text-3xl font-bold transition-transform group-hover:translate-x-1"></span>
+            </span>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-3xl focus:outline-none mt-3">
+            &#9776;
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+         class="hidden md:hidden flex flex-col items-center pb-6 text-lg font-bold bg-dark-bg border-t border-accent-gray w-full left-0 z-50 text-center">
+        <a href="index.html" class="nav-link py-4 w-full border-accent-gray border-b">Home</a>
+        <a href="About.html" class="nav-link py-4 w-full border-accent-gray border-b">About</a>
+        <a href="index.html#projects" class="nav-link py-4 w-full border-accent-gray border-b">Projects</a>
+        <a href="contact.html" class="nav-link py-4 w-full border-accent-gray border-b active">Contact</a>
+    </div>
+</header>
+
+<script>
+document.getElementById("mobile-menu-btn").addEventListener("click", () => {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+});
+</script>
+
+
+
+<!-- PAGE CONTENT WITH FADE + SLIDE ANIMATION -->
+<div id="page-content" class="opacity-0 translate-y-10 transition-all duration-700 ease-out">
+
+<section class="max-w-[1650px] mx-auto px-6 mb-16 lg:px-50 mt-16 pb-32">
+
+    <!-- Label -->
+    <p class="text-2xl text-gray-400 mb-6">// Contact</p>
+
+    <!-- Heading -->
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-[95px] leading-tight font-light text-center mb-6">
+
+        Say Hi! and tell me <br> about your idea
+    </h1>
+
+    <p class="text-center text-2xl text-gray-400 mb-28">
+        Looking for a ui/ux designer? Reach out here.
+    </p>
+
+    <!-- FORM -->
+<form action="https://formspree.io/f/xblnyedw" method="POST" class="max-w-8xl mx-auto">
+
+    <p class="text-2xl mb-5 text-gray-300">Email Address</p>
+    <input 
+        type="email"
+        name="email"
+        required
+        placeholder="Write your email address..."
+        class="w-full bg-transparent text-xl sm:text-2xl border-b border-gray-600 pb-4 h-20 mb-20 outline-none focus:border-white transition"
+    >
+
+    <p class="text-2xl mb-5 text-gray-300">Message</p>
+    <textarea 
+        name="message"
+        required
+        placeholder="Compose a message..."
+        class="w-full bg-transparent text-xl sm:text-2xl border-b border-gray-600 pb-4 h-40 outline-none focus:border-white transition"
+    ></textarea>
+
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-10 sm:gap-0 mt-20">
+
+        <div class="flex flex-wrap gap-6 text-2xl sm:text-3xl">
+
+            <a href="https://www.facebook.com/grizonrussel.sacay/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="hover:text-white">
+                <i class="ri-facebook-fill"></i>
+            </a>
+
+            <a href="https://www.instagram.com/grznrssll/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="hover:text-white">
+                <i class="ri-instagram-line"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/grizon-russell-sacay-a61746257/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="hover:text-white">
+                <i class="ri-linkedin-fill"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@gnzdly" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="hover:text-white">
+                <i class="ri-tiktok-fill"></i>
+            </a>
+
+            <!-- ⭐ Gmail Icon -->
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=grizonrussel.sacay@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white">
+                <i class="ri-mail-line"></i>
+            </a>
+
+        </div>
+
+        <button type="submit" class="nav-link text-3xl flex items-center gap-3 hover:text-gray-300 transition">
+            Submit 
+            <i class="ri-arrow-right-up-line text-4xl"></i>
+        </button>
+
+    </div>
+
+
+</form>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-900 py-10">
+    <div class="max-w-[1650px] mx-auto px-6 flex flex-col sm:flex-row justify-between text-gray-500 text-lg sm:text-xl gap-8">
+
+        <p>&copy; 2025. All Rights Reserved.</p>
+
+        <div class="flex space-x-8">
+            <a href="index.html" class="hover:text-white">Home</a>
+            <a href="About.html" class="hover:text-white">About</a>
+            <a href="index.html#projects" class="hover:text-white">Projects</a>
+            <a href="contact.html" class="hover:text-white">Contact</a>
+        </div>
+    </div>
+</footer>
+
+</div> <!-- END PAGE CONTENT -->
+
+
+<!-- FADE + SLIDE ANIMATION SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const content = document.getElementById("page-content");
+
+    // small delay makes the animation feel smoother
+    setTimeout(() => {
+        content.classList.remove("opacity-0", "translate-y-10");
+        content.classList.add("opacity-100", "translate-y-0");
+    }, 80);
+});
+</script>
+
+
+</body>
+</html>
