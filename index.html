@@ -12,141 +12,160 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">  
 
-    <style>
-        :root {
-            --bg-dark: #0A0A0A; 
-            --text-light: #F9F9F9;
-            --border-gray: #333333;
-        }
+<style>
+/* =========================================================
+   ROOT + BASE STYLES
+========================================================= */
+:root {
+    --bg-dark: #0A0A0A;
+    --text-light: #F9F9F9;
+    --border-gray: #333333;
+}
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            font-family: 'Coolvetica', sans-serif;
-            scroll-behavior: smooth;
-            letter-spacing: 2px;
-        }
+html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+}
 
-        @font-face {
-            font-family: 'Coolvetica';
-            src: url('fonts/Coolvetica Rg.otf') format('opentype');
-        }
+@font-face {
+    font-family: 'Coolvetica';
+    src: url('fonts/Coolvetica Rg.otf') format('opentype');
+}
 
-        @font-face {
-            font-family: 'Infinium Guardian';
-            src: url('fonts/Infinium Guardian.ttf') format('truetype');
-        }
+@font-face {
+    font-family: 'Infinium Guardian';
+    src: url('fonts/Infinium Guardian.ttf') format('truetype');
+}
 
-        /* NAVIGATION LINK STYLES */
-        .nav-link-style {
-            position: relative;
-            padding-bottom: 6px;
-            transition: color .3s ease;
-            display: inline-flex;
-            align-items: center;
-            font-size: 20px;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Coolvetica', sans-serif;
+    scroll-behavior: smooth;
+    letter-spacing: 2px;
+}
 
-        .nav-link-style::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 2px;
-            background-color: currentColor;
-            width: 0;
-            transition: width 0.5s cubic-bezier(0.30, 0.1, 0.15, 1);
-        }
+section {
+    overflow-x: hidden;
+}
 
-        .nav-link-style.active::after {
-            width: 20px;
-        }
+/* =========================================================
+   NAV LINKS
+========================================================= */
+.nav-link-style {
+    position: relative;
+    padding-bottom: 6px;
+    transition: color .3s ease;
+    display: inline-flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
 
-        .nav-link-style:hover::after {
-            width: 100%;
-        }
+.nav-link-style::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: currentColor;
+    width: 0;
+    transition: width 0.5s cubic-bezier(0.30, 0.1, 0.15, 1);
+}
 
-        /* SKILL BAR ANIMATION */
-        .skill-bar-fill {
-            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-            width: 0;
-        }
+.nav-link-style.active::after {
+    width: 20px;
+}
 
-        /* MOBILE LOGO SIZE + ALIGNMENT (same across all pages) */
-        @media (max-width: 768px) {
-            .mobile-logo {
-                height: 30px !important; /* adjustable logo size */
-                margin-top: 0 !important;
-            }
-            .mobile-nav-align {
-                align-items: center !important;
-                padding-top: 1rem !important;
-                padding-bottom: 1rem !important;
-            }
-        }
+.nav-link-style:hover::after {
+    width: 100%;
+}
 
-        /* PAGE FADE-IN ANIMATION */
-        #page-wrapper {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-        }
-        #page-wrapper.fade-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+.skill-bar-fill {
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    width: 0;
+}
 
-        html { scroll-behavior: smooth; }
+#page-wrapper {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
 
-        /* --- MOBILE NAVBAR FIX (MATCHES OTHER PAGES) ----------------------- */
+#page-wrapper.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   MOBILE / TABLET RESPONSIVE FIXES
+========================================================= */
+
+/* ---------- GLOBAL TYPO ---------- */
+@media (max-width: 480px) {
+    html { font-size: 92%; }
+}
+
+/* ---------- NAVBAR ---------- */
 @media (max-width: 768px) {
+    nav {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
 
-    /* Align logo + burger button perfectly */
     .mobile-nav-align {
         align-items: center !important;
         padding-top: 1rem !important;
         padding-bottom: 1rem !important;
+        gap: 0 !important;
     }
 
-    /* Adjustable mobile logo size */
     .mobile-logo {
-        height: 42px !important; /* ← change this if you want */
+        height: 36px !important;
         margin-top: 0 !important;
     }
 
-    /* Adjust burger button size + alignment */
     #mobile-menu-btn {
         font-size: 32px !important;
-        margin-top: 0 !important;
-        padding-top: 4px;
+        padding: 0 !important;
+        margin-top: 4px;
     }
 
-    /* Make the navbar cleaner on mobile */
-    nav {
-        padding-top: 1.25rem !important;
-        padding-bottom: 1.25rem !important;
-    }
-
-    /* Mobile menu full width fix */
     #mobile-menu {
         width: 100% !important;
+        text-align: center;
         top: 100%;
         left: 0;
+        padding-top: .5rem;
     }
 }
 
+/* =========================================================
+   HERO SECTION
+========================================================= */
 
-/* --- HERO SECTION RESPONSIVE FIX ---------------------------------- */
+@media (max-width: 1024px) {
+    #home h1 {
+        font-size: clamp(2.6rem, 6vw, 5rem);
+        line-height: 1.15;
+    }
+}
+
 @media (max-width: 768px) {
-    /* Reduce hero heading size */
     #home h1 {
         font-size: 2.6rem !important;
         line-height: 1.2 !important;
     }
 
-    /* Align social links vertically */
+    #home p {
+        font-size: 1.3rem !important;
+        max-width: 100% !important;
+    }
+
     #home .text-2xl {
         flex-direction: column;
         gap: 2rem;
@@ -158,67 +177,175 @@
 }
 
 @media (max-width: 480px) {
-    #home h1 {
-        font-size: 2.2rem !important;
+    #home h1 { font-size: 2.2rem !important; }
+}
+
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+@media (max-width: 1024px) {
+    #about img {
+        width: 95% !important;
+        max-width: 420px !important;
     }
 }
 
-
-/* --- ABOUT SECTION FIX -------------------------------------------- */
 @media (max-width: 768px) {
-    #about img {
-        width: 85% !important;
-    }
+    #about img { width: 85% !important; }
 
     #about h2 {
-        font-size: 2.6rem !important;
+        font-size: clamp(2.3rem, 6vw, 3.8rem) !important;
     }
 
     #about p {
-        font-size: 1.3rem !important;
+        font-size: 1.25rem !important;
+        max-width: 95% !important;
     }
 }
 
-
-/* --- SKILLS SECTION FIX ------------------------------------------- */
+/* =========================================================
+   SKILLS
+========================================================= */
 @media (max-width: 768px) {
     #skills h2 {
         font-size: 2.6rem !important;
         line-height: 1.3 !important;
     }
-
     .skill-box {
         padding: 2rem !important;
     }
 }
 
-
-/* --- PROJECTS SECTION FIX ------------------------------------------ */
+/* =========================================================
+   PROJECTS
+========================================================= */
 @media (max-width: 768px) {
     #projects h2 {
-        font-size: 2.8rem !important;
+        font-size: clamp(2.6rem, 6vw, 4rem) !important;
         line-height: 1.2 !important;
+        margin-bottom: 3rem !important;
     }
 
     #projects h3 {
         font-size: 2rem !important;
     }
+
+    #projects img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+    }
+
+    #projects .p-6 {
+        padding: 1.5rem !important;
+    }
 }
 
+@media (max-width: 640px) {
+    #projects a.md\:col-span-2 {
+        grid-column: span 1 !important;
+    }
+}
 
-/* --- CONTACT SECTION FIX ------------------------------------------- */
+/* =========================================================
+   CONTACT
+========================================================= */
+@media (max-width: 1024px) {
+    #contact .text-5xl,
+    #contact .text-8xl {
+        font-size: clamp(2.4rem, 6vw, 3.5rem) !important;
+    }
+}
+
 @media (max-width: 768px) {
+    #contact { text-align: left !important; }
+
+    #contact .mt-16 { margin-top: 2rem !important; }
+
+    #contact .flex {
+        flex-direction: column !important;
+        gap: 2.5rem !important;
+    }
+
     #contact a.text-5xl,
     #contact a.text-8xl {
         font-size: 2.8rem !important;
     }
+}
 
-    #contact .mt-16 {
-        margin-top: 3rem !important;
+/* =========================================================
+   FOOTER
+========================================================= */
+@media (max-width: 640px) {
+    footer .flex {
+        flex-direction: column !important;
+        gap: 1rem !important;
     }
 }
 
-    </style>
+/* =========================================================
+   FIX SOCIAL LINKS MOBILE ALIGNMENT (INDEX.HTML)
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Fix overall section spacing */
+    .social-section {
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Perfect vertical stacking */
+    .social-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 1.2rem 0;
+    }
+
+    /* Left label (Facebook / Instagram / LinkedIn) */
+    .social-item h3 {
+        font-size: 1.3rem;
+        margin: 0;
+    }
+
+    /* Line before each icon */
+    .social-line {
+        flex: 1;
+        height: 2px;
+        background: #ffffff;
+        margin: 0 1rem;
+        opacity: 0.8;
+    }
+
+    /* Arrow icon */
+    .social-icon {
+        font-size: 1.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fix spacing between items */
+    .social-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    /* Smaller clean logo (top) */
+    .mobile-logo {
+        height: 40px !important;
+        margin: 0 auto !important;
+        display: block;
+    }
+}
+
+
+</style>
 
 </head>
 
@@ -360,61 +487,6 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-32">
-        <h2 class="md:text-7xl mb-24 leading-[1.1] max-w-6xl text-white" style="font-family: 'Coolvetica', sans-serif;">
-            My Experience and Mastery of the Design Tools I’ve Used Throughout My Career
-        </h2>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Skill 1 -->
-            <div class="skill-box p-8 border border-black/10 rounded-2xl hover:border-white/30 transition duration-500 bg-white/5 backdrop-blur-sm">
-                <h3 class="text-4xl mb-2 tracking-wide text-white" style="font-family: 'Coolvetica', sans-serif;">Website Design</h3>
-                <p class="text-2md text-gray-500 mb-8 tracking-widest" style="font-family: 'Coolvetica', sans-serif;">Scalable UI Components</p>
-                
-                <div class="text-7xl mb-6 text-white" style="font-family: 'Infinium Guardian', sans-serif;">90%</div>
-                
-                <div class="h-16 w-full bg-gray-800/50 rounded-lg overflow-hidden relative">
-                    <div class="skill-bar-fill h-full bg-white absolute top-0 left-0" data-percentage="90"></div>
-                </div>
-            </div>
-
-            <!-- Skill 2 -->
-            <div class="skill-box p-8 border border-black/10 rounded-2xl hover:border-white/30 transition duration-500 bg-white/5 backdrop-blur-sm">
-                <h3 class="text-4xl mb-2 tracking-wide text-white" style="font-family: 'Coolvetica', sans-serif;">Mobile App UI</h3>
-                <p class="text-2md text-gray-500 mb-8 tracking-widest" style="font-family: 'Coolvetica', sans-serif;">Device Friendly Layouts</p>
-                
-                <div class="text-7xl mb-6 text-white" style="font-family: 'Infinium Guardian', sans-serif;">85%</div>
-                
-                <div class="h-16 w-full bg-gray-800/50 rounded-lg overflow-hidden relative">
-                    <div class="skill-bar-fill h-full bg-white absolute top-0 left-0" data-percentage="85"></div>
-                </div>
-            </div>
-
-            <!-- Skill 3 -->
-            <div class="skill-box p-8 border border-black/10 rounded-2xl hover:border-white/30 transition duration-500 bg-white/5 backdrop-blur-sm">
-                <h3 class="text-4xl mb-2 tracking-wide text-white" style="font-family: 'Coolvetica', sans-serif;">Prototyping</h3>
-                <p class="text-2md text-gray-500 mb-8 tracking-widest" style="font-family: 'Coolvetica', sans-serif;">Motion and Transitions</p>
-                
-                <div class="text-7xl mb-6 text-white" style="font-family: 'Infinium Guardian', sans-serif;">90%</div>
-                
-                <div class="h-16 w-full bg-gray-800/50 rounded-lg overflow-hidden relative">
-                    <div class="skill-bar-fill h-full bg-white absolute top-0 left-0" data-percentage="90"></div>
-                </div>
-            </div>
-
-            <!-- Skill 4 -->
-            <div class="skill-box p-8 border border-black/10 rounded-2xl hover:border-white/30 transition duration-500 bg-white/5 backdrop-blur-sm">
-                <h3 class="text-4xl mb-2 tracking-wide text-white" style="font-family: 'Coolvetica', sans-serif;">Figma Design</h3>
-                <p class="text-2md text-gray-500 mb-8 tracking-widest" style="font-family: 'Coolvetica', sans-serif;">Designing Tool</p>
-                
-                <div class="text-7xl mb-6 text-white" style="font-family: 'Infinium Guardian', sans-serif;">90%</div>
-                
-                <div class="h-16 w-full bg-gray-800/50 rounded-lg overflow-hidden relative">
-                    <div class="skill-bar-fill h-full bg-white absolute top-0 left-0" data-percentage="90"></div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
     <!-- Projects Section -->
@@ -426,7 +498,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
             
             <!-- Project 1 -->
-            <a href="#" class="group block overflow-hidden rounded-2xl  border-white/10">
+            <a href="#~" class="group block overflow-hidden rounded-2xl  border-white/10">
                 <!-- Project image -->
                 <div class="group block overflow-hidden rounded-2xl  border-white/10">
                     <img src="images/Projects/Landingpage.png"
@@ -663,6 +735,4 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 </body>
-
 </html>
-
