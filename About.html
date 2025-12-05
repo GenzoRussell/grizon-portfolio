@@ -9,49 +9,203 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 
 <style>
-    #page-content { transition: opacity 0.8s ease, transform 0.8s ease; }
-    @font-face {
-        font-family: 'Coolvetica';
-        src: url('fonts/Coolvetica Rg.otf') format('opentype');
-        font-weight: normal;
+/* =========================================================
+   FONTS + GLOBAL
+========================================================= */
+
+@font-face {
+    font-family: 'Coolvetica';
+    src: url('fonts/Coolvetica Rg.otf') format('opentype');
+    font-weight: normal;
+}
+
+body {
+    font-family: 'Coolvetica', sans-serif;
+    background: #0A0A0A;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 480px) {
+    html { font-size: 92%; }
+}
+
+#page-content {
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+/* =========================================================
+   NAVIGATION LINKS
+========================================================= */
+
+.nav-link {
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px;
+    width: 0;
+    background: currentColor;
+    transition: width .45s cubic-bezier(.3, .1, .15, 1);
+}
+
+.nav-link.active::after { width: 22px; }
+.nav-link:hover::after { width: 100%; }
+
+/* =========================================================
+   NAVBAR RESPONSIVE FIX (MATCHED WITH INDEX.HTML)
+========================================================= */
+
+@media (max-width: 768px) {
+
+    nav {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
     }
-    body {
-        font-family: 'Coolvetica', sans-serif;
-        background: #0A0A0A;
-        color: #ffffff;
-        letter-spacing: 1px;
+
+    /* Consistent mobile alignment */
+    .mobile-nav-align {
+        align-items: center !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
     }
-    .nav-link { position: relative; padding-bottom: 6px; }
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0; left: 0;
-        height: 2px; width: 0;
-        background: currentColor;
-        transition: .4s;
-    }
-    .nav-link.active::after { width: 22px; }
-    .nav-link:hover::after { width: 100%; }
-    /* Force smaller logo on mobile */
-    @media (max-width: 768px) {
-        .mobile-logo {
-        height: 40px !important; /* adjust as you like */
+
+    /* Mobile logo size */
+    .mobile-logo {
+        height: 36px !important;
         margin-top: 0 !important;
-        }
     }
-    /* Mobile logo sizing and alignment fix */
-    @media (max-width: 768px) {
-        .mobile-logo {
-            height: 30px !important;   /* Adjust to your taste */
-            margin-top: 0 !important;
-        }
-        .mobile-nav-align {
-            align-items: center !important; /* forces vertical centering on mobile */
-            padding-top: 1rem !important;
-            padding-bottom: 1rem !important;
-        }
+
+    /* Burger button */
+    #mobile-menu-btn {
+        font-size: 32px !important;
+        padding: 0 !important;
+        margin-top: 4px;
     }
-    </style>
+
+    /* Mobile dropdown */
+    #mobile-menu {
+        width: 100% !important;
+        left: 0;
+        text-align: center;
+        padding-top: .5rem;
+    }
+}
+
+/* =========================================================
+   ABOUT PAGE — HEADINGS + PARAGRAPHS
+========================================================= */
+
+@media (max-width: 1024px) {
+    h1 {
+        font-size: clamp(2.6rem, 6vw, 5rem);
+        line-height: 1.15;
+    }
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: clamp(2.3rem, 6vw, 3.8rem) !important;
+    }
+    
+    p {
+        font-size: 1.25rem !important;
+        max-width: 95% !important;
+    }
+}
+
+/* =========================================================
+   ABOUT GRID + IMAGE RESPONSIVENESS
+========================================================= */
+
+@media (max-width: 1024px) {
+    #about-img {
+        width: 95% !important;
+        max-width: 420px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    img {
+        width: 85% !important;
+        height: auto !important;
+        object-fit: cover !important;
+    }
+}
+
+/* =========================================================
+   EXPERIENCE SECTION SPACING FIX
+========================================================= */
+
+@media (max-width: 768px) {
+    .experience-box {
+        padding-bottom: 1.8rem !important;
+    }
+}
+
+/* =========================================================
+   FOOTER + GENERAL FIXES
+========================================================= */
+
+section { overflow-x: hidden; }
+
+@media (max-width: 640px) {
+    footer .flex {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+}
+
+/* =========================================================
+   GLOBAL RESPONSIVE IMAGE BEHAVIOR
+========================================================= */
+
+img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================================================
+   ABOUT PAGE PROFILE IMAGE — RESPONSIVE FIX
+========================================================= */
+
+#about-img {
+    width: 100%;
+    max-width: 480px;       /* keeps it nicely sized on desktops */
+    height: auto;
+    object-fit: cover;
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+    #about-img {
+        max-width: 420px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    #about-img {
+        max-width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+</style>
+
 </head>
 
 <body class="antialiased">
@@ -60,7 +214,7 @@
 
     <!-- Logo (matched with index.html) -->
     <a href="javascript:location.reload();" class="mt-5 inline-block">
-        <img src="images/LOGO.png" alt="Genzo Logo" class="mobile-logo h-10 sm:h-12 md:h-5 object-contain">
+        <img src="images/logo.png" alt="Genzo Logo" class="mobile-logo h-10 sm:h-12 md:h-5 object-contain">
     </a>
 
     <!-- Desktop Navigation (matched spacing) -->
@@ -123,13 +277,13 @@
                                 <p>2024 - 2025</p>
                             </div>
                         </div>
-                        <div>
+                        <!-- <div>
                             <p class="text-3xl sm:text-4xl text-gray-300 mb-3 tracking-wide">Landing Designer</p>
                             <div class="text-xl sm:text-2xl flex flex-col sm:flex-row justify-between border-b border-gray-700 pb-6 sm:pb-8 text-gray-500 gap-2">
                                 <p>Client Project: Demiren Hotels and Restaurant</p>
                                 <p>2025</p>
                             </div>
-                        </div>
+                        </div> -->
                         <div>
                             <p class="text-3xl sm:text-4xl text-gray-300 mb-3 tracking-wide">Technical Website Support</p>
                             <div class="text-xl sm:text-2xl flex flex-col sm:flex-row justify-between border-b border-gray-700 pb-6 sm:pb-8 text-gray-500 gap-2">
@@ -192,4 +346,3 @@ document.getElementById("mobile-menu-btn").addEventListener("click", () => {
 </script>
 </body>
 </html>
-
