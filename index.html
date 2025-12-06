@@ -358,7 +358,7 @@ footer .flex {
     <nav class="max-w-[1650px] mx-auto px-6 py-8 flex justify-between items-start mobile-nav-align text-lg">
 
         <!-- Logo -->
-        <a href="#home" class="mt-5 inline-block">
+        <a href="#home" onclick="location.reload()" class="mt-5 inline-block">
             <img src="images/LOGO.png" alt="Genzo Logo" class="mobile-logo h-10 sm:h-12 md:h-5 object-contain">
         </a>
 
@@ -736,6 +736,12 @@ document.addEventListener("DOMContentLoaded", () => {
     activateNavLink();
 });
 </script>
-
+<script>
+// Make logo reload the page when clicked
+document.querySelector('.mobile-logo')?.parentElement?.addEventListener('click', function (e) {
+    e.preventDefault();
+    location.reload();
+});
+</script>
 </body>
 </html>
