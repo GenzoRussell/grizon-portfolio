@@ -119,13 +119,13 @@ section {
 
     .mobile-nav-align {
         align-items: center !important;
-        padding-top: 1rem !important;
-        padding-bottom: 1rem !important;
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
         gap: 0 !important;
     }
 
     .mobile-logo {
-        height: 36px !important;
+        height: 25px !important;
         margin-top: 0 !important;
     }
 
@@ -277,10 +277,13 @@ section {
    FOOTER
 ========================================================= */
 @media (max-width: 640px) {
-    footer .flex {
-        flex-direction: column !important;
-        gap: 1rem !important;
-    }
+footer .flex {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+}
 }
 
 /* =========================================================
@@ -337,11 +340,11 @@ section {
     }
 
     /* Smaller clean logo (top) */
-    .mobile-logo {
+    /* .mobile-logo {
         height: 40px !important;
         margin: 0 auto !important;
         display: block;
-    }
+    } */
 }
 
 
@@ -382,12 +385,12 @@ section {
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu"
-         class="hidden md:hidden flex flex-col items-center pb-6 text-lg font-bold bg-dark-bg border-t border-accent-gray w-full left-0 z-50 text-center">
-        <a href="#home" class="nav-link-style py-4 w-full border-accent-gray border-b">Home</a>
-        <a href="#about" class="nav-link-style py-4 w-full border-accent-gray border-b">About</a>
-        <a href="#projects" class="nav-link-style py-4 w-full border-accent-gray border-b">Projects</a>
-        <a href="#contact" class="nav-link-style py-4 w-full border-accent-gray border-b">Contact</a>
+<!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden flex flex-col bg-dark-bg border-t border-accent-gray md:hidden w-full py-4 space-y-2 text-center">
+        <a href="index.html" class="block py-4 border-b border-accent-gray nav-link w-full">Home</a>
+        <a href="About.html" class="block py-4 border-b border-accent-gray nav-link w-full">About</a>
+        <a href="index.html#projects" class="block py-4 border-b border-accent-gray nav-link w-full">Projects</a>
+        <a href="index.html#contact" class="block py-4 border-b border-accent-gray nav-link w-full">Contact</a>
     </div>
 </header>
 
