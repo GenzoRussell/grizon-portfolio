@@ -106,6 +106,18 @@ section {
    MOBILE / TABLET RESPONSIVE FIXES
 ========================================================= */
 
+@media (min-width: 1025px) and (max-width: 1536px) {
+    html {
+        font-size: 80%; /* Shrinks all rem-based sizes */
+    }
+    
+    #home h1 {
+        font-size: 6rem !important; /* Prevents the header from being too massive */
+        line-height: 1.1;
+        margin-bottom: 4rem !important;
+    }
+}
+
 /* ---------- GLOBAL TYPO ---------- */
 @media (max-width: 480px) {
     html { font-size: 92%; }
@@ -753,6 +765,7 @@ document.querySelector('.mobile-logo')?.parentElement?.addEventListener('click',
 </script>
 </body>
 </html>
+
 
 
 
