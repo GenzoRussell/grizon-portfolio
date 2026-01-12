@@ -14,7 +14,7 @@
     #page-content {
         transition: opacity 0.8s ease, transform 0.8s ease;
     }
-</style>
+    </style>
     <style>
         @font-face {
             font-family: 'Coolvetica';
@@ -77,7 +77,7 @@
         <!-- Lets Talk Button -->
         <a href="Contact.html" class="hidden md:flex mt-3 flex-col items-end hover:text-gray-300 transition-colors group nav-link active">
             <span class="text-2xl flex items-center gap-2">
-                Lets Talk
+                Let's Talk
                 <span class="ri-arrow-right-up-line text-3xl font-bold transition-transform group-hover:translate-x-1"></span>
             </span>
         </a>
@@ -104,8 +104,6 @@ document.getElementById("mobile-menu-btn").addEventListener("click", () => {
 });
 </script>
 
-
-
 <!-- PAGE CONTENT WITH FADE + SLIDE ANIMATION -->
 <div id="page-content" class="opacity-0 translate-y-10 transition-all duration-700 ease-out">
 
@@ -125,76 +123,66 @@ document.getElementById("mobile-menu-btn").addEventListener("click", () => {
     </p>
 
     <!-- FORM -->
-<form action="https://formspree.io/f/xblnyedw" method="POST" class="max-w-8xl mx-auto">
+    <form action="send.php" method="POST" class="max-w-8xl mx-auto">
 
-    <p class="text-2xl mb-5 text-gray-300">Email Address</p>
-    <input 
-        type="email"
-        name="email"
-        required
-        placeholder="Write your email address..."
-        class="w-full bg-transparent text-xl sm:text-2xl border-b border-gray-600 pb-4 h-20 mb-20 outline-none focus:border-white transition"
-    >
+        <p class="text-2xl mb-5 text-gray-300">Email Address</p>
+        <input 
+            id="email-input"
+            type="email"
+            name="email"
+            required
+            pattern="[a-z0-9._%+-]+@gmail\.com$"
+            placeholder="Enter your email..."
+            class="w-full bg-transparent text-xl sm:text-2xl border-b border-gray-600 pb-4 h-20 outline-none focus:border-white transition"
+        >
+        <p id="email-error" class="text-red-500 mt-2 h-6 opacity-0 transition-opacity duration-300">
+            Please use a valid "@gmail.com" address.
+        </p>
 
-    <p class="text-2xl mb-5 text-gray-300">Message</p>
-    <textarea 
-        name="message"
-        required
-        placeholder="Compose a message..."
-        class="w-full bg-transparent text-xl sm:text-2xl border-b border-gray-600 pb-4 h-40 outline-none focus:border-white transition"
-    ></textarea>
+        <!-- <p class="text-2xl mb-5 mt-10 text-gray-300">Subject</p>
+        <input 
+            type="text"
+            name="name"
+            required
+            placeholder="Write your subject..."
+            class="w-full bg-transparent text-xl sm:text-2xl border-b border-gray-600 pb-4 h-20 mb-20 outline-none focus:border-white transition"
+        > -->
 
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-10 sm:gap-0 mt-20">
+        <p class="text-2xl mb-5 text-gray-300">Message</p>
+        <textarea 
+            name="message"
+            required
+            placeholder="Compose a message..."
+            class="w-full bg-transparent text-xl sm:text-2xl border-b border-gray-600 pb-4 h-40 outline-none focus:border-white transition"
+        ></textarea>
 
-        <!-- <div class="flex flex-wrap gap-6 text-2xl sm:text-3xl">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-10 sm:gap-0 mt-20">
+            <button type="submit" class="nav-link text-3xl flex items-right gap-3 hover:text-gray-300 transition">
+                Submit
+                <i class="ri-arrow-right-up-line text-4xl"></i>
+            </button>
+        </div>
+    </form>
 
-            <a href="https://www.facebook.com/grizonrussel.sacay/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="hover:text-white">
-                <i class="ri-facebook-fill"></i>
-            </a>
+    <script>
+        const emailInput = document.getElementById('email-input');
+        const emailError = document.getElementById('email-error');
 
-            <a href="https://www.instagram.com/grznrssll/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="hover:text-white">
-                <i class="ri-instagram-line"></i>
-            </a>
+        emailInput.addEventListener('blur', function() {
+            if (emailInput.value !== "" && !emailInput.checkValidity()) {
+                emailError.classList.remove('opacity-0');
+                emailInput.classList.add('border-red-500');
+            } else {
+                emailError.classList.add('opacity-0');
+                emailInput.classList.remove('border-red-500');
+            }
+        });
 
-            <a href="https://www.linkedin.com/in/grizon-russell-sacay-a61746257/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="hover:text-white">
-                <i class="ri-linkedin-fill"></i>
-            </a>
-
-            <a href="https://www.tiktok.com/@gnzdly" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="hover:text-white">
-                <i class="ri-tiktok-fill"></i>
-            </a>
-
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=grizonrussel.sacay@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hover:text-white">
-                <i class="ri-mail-line"></i>
-            </a>
-
-        </div> -->
-
-        <button type="submit" class="nav-link text-3xl flex items-center gap-3 hover:text-gray-300 transition">
-            Submit 
-            <i class="ri-arrow-right-up-line text-4xl"></i>
-        </button>
-
-    </div>
-
-
-</form>
-
+        emailInput.addEventListener('input', function() {
+            emailError.classList.add('opacity-0');
+            emailInput.classList.remove('border-red-500');
+        });
+    </script>
 </section>
 
 <!-- FOOTER -->
@@ -214,7 +202,6 @@ document.getElementById("mobile-menu-btn").addEventListener("click", () => {
 
 </div> <!-- END PAGE CONTENT -->
 
-
 <!-- FADE + SLIDE ANIMATION SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -227,12 +214,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 80);
 });
 </script>
-
-
 </body>
 </html>
-
-
-
-
-
